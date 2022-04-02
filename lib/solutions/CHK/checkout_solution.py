@@ -49,6 +49,3 @@ def checkout(skus : str) -> int:
     if E_discounts_to_apply >= B_count:
         checkout_total = checkout_total - (B_count * 30) 
     return checkout_total
-
-
-
