@@ -1,4 +1,3 @@
-from lib.solutions.HLO.hello_solution import hello
 from solutions.HLO import hello_solution
 
 
