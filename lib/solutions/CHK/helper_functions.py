@@ -56,4 +56,3 @@ def calculate_A_discount(A_count: int) -> int:
     return buy_5_discount + buy_3_discount
 
 
-
