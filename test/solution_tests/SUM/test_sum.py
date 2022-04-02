@@ -7,4 +7,3 @@ class TestSum():
         solutions = [3, 7, 11, 15]
         for test, solution in zip(test_list, solutions):
             assert sum_solution.compute(test[0], test[1]) == solution
-
