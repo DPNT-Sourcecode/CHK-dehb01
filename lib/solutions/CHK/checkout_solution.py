@@ -1,4 +1,4 @@
-
+from .helper_functions import calculate_A_discount
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -16,7 +16,6 @@ def checkout(skus : str) -> int:
         "E": 40,
     }
     A_count = 0
-    A_discount = 20 # offer is 3 for 130, a saving of 20 pounds
     B_count = 0
     B_discount = 15 # offer is 2 for 45, a saving of 15 pounds
     checkout_total = 0
@@ -29,11 +28,11 @@ def checkout(skus : str) -> int:
             B_count += 1
         checkout_total += price_list[sku]
     
-    A_discounts_to_apply = int(A_count / 3) # rounds down
+    A_total_discount = calculate_A_discount(A_count)
     B_discounts_to_apply = int(B_count / 2)
 
     # Apply A discounts
-    checkout_total = checkout_total - (A_discounts_to_apply * A_discount)
+    checkout_total = checkout_total - A_total_discount
 
     # Apply B discounts
     checkout_total = checkout_total - (B_discounts_to_apply * B_discount)
