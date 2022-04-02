@@ -6,13 +6,14 @@ def checkout(skus : str) -> int:
     if type(skus) != str: # input must be a string
         return -1
 
-    valid_skus = ['A', 'B', 'C', 'D']
+    valid_skus = ['A', 'B', 'C', 'D', 'E']
     sku_list = list(skus)
     price_list = {
         "A": 50,
         "B": 30,
         "C": 20,
-        "D": 15
+        "D": 15,
+        "E": 40,
     }
     A_count = 0
     A_discount = 20 # offer is 3 for 130, a saving of 20 pounds
@@ -38,3 +39,4 @@ def checkout(skus : str) -> int:
     checkout_total = checkout_total - (B_discounts_to_apply * B_discount)
 
     return checkout_total
+
