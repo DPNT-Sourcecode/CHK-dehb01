@@ -44,7 +44,7 @@ def checkout(skus : str) -> int:
     for sku, offer_list in offer_dict.items():
         total_discount += calculate_discount(counts, sku, offer_list, price_list)
 
-    # total_discount += calculate_STXYZ_discount(counts, price_list)
+    total_discount += calculate_STXYZ_discount(counts, price_list)
 
     return checkout_total - total_discount
 
