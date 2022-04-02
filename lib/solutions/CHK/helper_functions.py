@@ -38,5 +38,3 @@ def calculate_STXYZ_discount(counts: dict, price_list: dict) -> int:
 
 
 
-
-

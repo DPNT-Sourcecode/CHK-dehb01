@@ -47,4 +47,3 @@ def checkout(skus : str) -> int:
     total_discount += calculate_STXYZ_discount(counts, price_list)
 
     return checkout_total - total_discount
-
