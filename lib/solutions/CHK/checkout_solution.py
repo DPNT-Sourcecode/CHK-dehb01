@@ -88,4 +88,3 @@ def checkout(skus : str) -> int:
     # checkout_total = checkout_total - (F_discounts_to_apply * F_discount)
 
     # return checkout_total
-

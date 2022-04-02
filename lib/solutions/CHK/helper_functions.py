@@ -3,6 +3,8 @@ def calculate_discount(counts: dict, sku: str, offer_list: list, price_list: dic
     price = price_list[sku]
     count = counts[sku]
 
+
+    # offer[0] represents how many need to be bought, offer[1] is the price
     if len(offer_list) == 2: # there is a large and small multi offer
         large_offer = offer_list[1]
         small_offer = offer_list[0]
@@ -18,6 +20,8 @@ def calculate_discount(counts: dict, sku: str, offer_list: list, price_list: dic
         discounts = int(count/ offer[0])
         total = discounts * ((price * offer[0]) - offer[1])
         return total
+
+def calculate_STXYZ_discount(counts: dict, price_list: dict) -> int:
 
 
 
