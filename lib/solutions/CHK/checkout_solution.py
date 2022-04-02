@@ -1,4 +1,4 @@
-from .helper_functions import calculate_discount
+from .helper_functions import calculate_discount, calculate_STXYZ_discount
 from .dicts import PRICE_LIST, OFFER_DICT, BUY_MULTI_GET_FREE_OFFERS
 
 # noinspection PyUnusedLocal
@@ -8,11 +8,13 @@ def checkout(skus : str) -> int:
         return -1
 
     valid_skus = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    
     counts = {}
     # create a dict of zero counts for each sku
     for sku in valid_skus:
         counts[sku] = 0
-    sku_list = list(skus)
+
+    sku_list = list(skus) # convert string to a list of each sku
     price_list = PRICE_LIST.copy()
     offer_dict = OFFER_DICT.copy()
     buy_multi_get_free_offers = BUY_MULTI_GET_FREE_OFFERS.copy()
@@ -88,3 +90,4 @@ def checkout(skus : str) -> int:
     # checkout_total = checkout_total - (F_discounts_to_apply * F_discount)
 
     # return checkout_total
+

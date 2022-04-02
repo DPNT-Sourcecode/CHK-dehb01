@@ -22,6 +22,16 @@ def calculate_discount(counts: dict, sku: str, offer_list: list, price_list: dic
         return total
 
 def calculate_STXYZ_discount(counts: dict, price_list: dict) -> int:
+    sku_list = ['S', 'T', 'X', 'Y', 'Z']
+    combined_count = 0
+    total_cost_without_discount = 0
+    for sku in sku_list:
+        count = counts[sku]
+        combined_count += count
+        total_cost_without_discount += price_list[sku] * count
+    discounts_to_make = int(combined_count / 3)
+    return total_cost_without_discount - (45 * discounts_to_make)
+
 
 
 
