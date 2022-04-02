@@ -34,7 +34,7 @@ def checkout(skus : str) -> int:
     A_total_discount = calculate_A_discount(A_count)
     E_discounts_to_apply = int(E_count / 2)
 
-    B_count_for_discounts = B_count - E_discounts_to_apply
+    B_count_for_discounts = B_count - E_discounts_to_apply # effectively remove the Bs from basket before applying th discount for B
     B_discounts_to_apply = int(B_count_for_discounts / 2)
 
     # Apply A discounts
@@ -49,5 +49,6 @@ def checkout(skus : str) -> int:
     if E_discounts_to_apply >= B_count:
         checkout_total = checkout_total - (B_count * 30) 
     return checkout_total
+
 
 
