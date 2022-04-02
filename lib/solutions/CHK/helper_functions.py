@@ -22,19 +22,33 @@ def calculate_discount(counts: dict, sku: str, offer_list: list, price_list: dic
         return total
 
 def calculate_STXYZ_discount(counts: dict, price_list: dict) -> int:
-    sku_list = ['S', 'T', 'X', 'Y', 'Z']
+    sku_list_price_ordered = ['Z', 'S', 'T', 'Y', 'X']
+    counts_copy = {}
     combined_count = 0
     total_cost_without_discount = 0
-    for sku in sku_list:
+    for sku in sku_list_price_ordered:
         count = counts[sku]
+        counts_copy[sku] = count
         combined_count += count
         total_cost_without_discount += price_list[sku] * count
     discounts_to_make = int(combined_count / 3)
+
+    # calculate the non discounted price, want to remove most expesnive items if can
+    non_discounted_price = 0
+    iterations = discounts_to_make * 3
+    for i in range(iterations):
+        for sku in sku_list_price_ordered:
+            if counts_copy[sku] == 0: continue # none left of that sku
+            counts_copy[sku] -= 1
+            non_discounted_price += price_list[sku]
+            break # go to the next iteration
+
     if discounts_to_make >= 1:
-        return total_cost_without_discount - (45 * discounts_to_make)
+        return non_discounted_price - (45 * discounts_to_make)
     else: 
         return 0
         
+
 
 
 
