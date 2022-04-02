@@ -32,8 +32,10 @@ def checkout(skus : str) -> int:
         checkout_total += price_list[sku]
     
     A_total_discount = calculate_A_discount(A_count)
-    B_discounts_to_apply = int(B_count / 2)
     E_discounts_to_apply = int(E_count / 2)
+
+    B_count_for_discounts = B_count - E_discounts_to_apply
+    B_discounts_to_apply = int(B_count_for_discounts / 2)
 
     # Apply A discounts
     checkout_total = checkout_total - A_total_discount
@@ -42,6 +44,9 @@ def checkout(skus : str) -> int:
     checkout_total = checkout_total - (B_discounts_to_apply * B_discount)
 
     # Apply E discounts
-    checkout_total = checkout_total - (E_discounts_to_apply * 30) # if buy 2 Es get one B free
-
+    if B_count > E_discounts_to_apply:
+        checkout_total = checkout_total - (E_discounts_to_apply * 30) 
+    if E_discounts_to_apply > B_count:
+        checkout_total = checkout_total - (B_count * 30) 
     return checkout_total
+
